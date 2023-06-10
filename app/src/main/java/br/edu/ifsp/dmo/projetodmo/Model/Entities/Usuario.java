@@ -8,6 +8,15 @@ public class Usuario {
     private String telefone;
     private String senha;
 
+    public Usuario (String nomeCompleto, String username, String cidade, String estado, String telefone, String senha){
+        this.nomeCompleto = nomeCompleto;
+        this.username = username;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.telefone = telefone;
+        this.senha = senha;
+    }
+
     public String getNomeCompleto() {
         return nomeCompleto;
     }

@@ -2,6 +2,7 @@ package br.edu.ifsp.dmo.projetodmo.Model.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
@@ -40,6 +41,46 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
         mDatabase = mHelper.getWritableDatabase();
         long lines = mDatabase.insert(Constant.ENTITY_USUARIO, null, contentValues);
         mDatabase.close();
+
+    }
+
+    @Override
+    public void loginUser(String username, String senha) {
+        Usuario usuario = null;
+        String columns[] = new String[]{
+                Constant.ATTR_FULLNAME,
+                Constant.ATTR_USERNAME,
+                Constant.ATTR_CITY,
+                Constant.ATTR_STATE,
+                Constant.ATTR_PHONE,
+                Constant.ATTR_PASSWORD
+        };
+
+        String selection = Constant.ATTR_USERNAME + " = ? ";
+        selection += Constant.ATTR_PASSWORD + " = ? ";
+        String selectionArgs[] = {username, senha};
+
+        try{
+            mDatabase = mHelper.getReadableDatabase();
+            Cursor cursor = mDatabase.query(
+                    Constant.ENTITY_USUARIO,
+                    columns,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+            if (cursor.moveToNext()){
+                usuario = new Usuario(cursor.getString(0), cursor.getString(1), cursor.getString(2),
+                        cursor.getString(3), cursor.getString(4), cursor.getString(5));
+            }
+            cursor.close();
+        } catch (Exception e){
+            usuario = null;
+        } finally{
+            mDatabase.close();
+        }
 
     }
 }
