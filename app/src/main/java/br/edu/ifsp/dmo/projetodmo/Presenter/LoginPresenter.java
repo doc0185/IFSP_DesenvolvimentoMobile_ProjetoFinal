@@ -1,12 +1,15 @@
 package br.edu.ifsp.dmo.projetodmo.Presenter;
 
 import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.LoginMVP;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.IUsuarioDAO;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.UsuarioDAOSQLite;
 import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
 import br.edu.ifsp.dmo.projetodmo.View.CadastroUsuarioActivity;
+import br.edu.ifsp.dmo.projetodmo.View.WeatherActivity;
 
 public class LoginPresenter implements LoginMVP.Presenter {
     private LoginMVP.View view;
@@ -25,12 +28,22 @@ public class LoginPresenter implements LoginMVP.Presenter {
 
     @Override
     public void autenticate(String username, String senha) {
-        uDAO.loginUser(username, senha);
+        if(uDAO.loginUser(username, senha)){
+            openWeather();
+        } else{
+            Log.d("Erro", "Senha Incorreta");
+        }
     }
 
     @Override
     public void openSignUp() {
         Intent intent = new Intent(view.getContext(), CadastroUsuarioActivity.class);
+        view.getContext().startActivity(intent);
+    }
+
+    @Override
+    public void openWeather() {
+        Intent intent = new Intent(view.getContext(), WeatherActivity.class);
         view.getContext().startActivity(intent);
     }
 }

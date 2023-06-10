@@ -45,7 +45,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
     }
 
     @Override
-    public void loginUser(String username, String senha) {
+    public boolean loginUser(String username, String senha) {
         Usuario usuario = null;
         String columns[] = new String[]{
                 Constant.ATTR_FULLNAME,
@@ -57,7 +57,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
         };
 
         String selection = Constant.ATTR_USERNAME + " = ? ";
-        selection += Constant.ATTR_PASSWORD + " = ? ";
+        selection += "AND " + Constant.ATTR_PASSWORD + " = ? ";
         String selectionArgs[] = {username, senha};
 
         try{
@@ -78,9 +78,10 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
             cursor.close();
         } catch (Exception e){
             usuario = null;
+            return false;
         } finally{
             mDatabase.close();
         }
-
+        return true;
     }
 }

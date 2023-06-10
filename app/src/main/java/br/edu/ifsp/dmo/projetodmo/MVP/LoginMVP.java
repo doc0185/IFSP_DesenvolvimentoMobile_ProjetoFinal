@@ -11,5 +11,7 @@ public interface LoginMVP {
         void deatach();
         void autenticate(String username, String senha);
         void openSignUp();
+
+        void openWeather();
     }
 }
