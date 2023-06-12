@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.LoginMVP;
 import br.edu.ifsp.dmo.projetodmo.Presenter.LoginPresenter;
@@ -50,7 +51,11 @@ public class MainActivity extends AppCompatActivity implements LoginMVP.View {
         confirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                presenter.autenticate(usernameEditText.getText().toString(), passwordEditText.getText().toString());
+                if (presenter.autenticate(usernameEditText.getText().toString(), passwordEditText.getText().toString())) {
+                    Toast.makeText(getContext(), "Usuário logado com Sucesso!", Toast.LENGTH_LONG).show();
+                } else{
+                    Toast.makeText(getContext(), "Senha/Login incorreto!", Toast.LENGTH_LONG).show();
+                }
             }
         });
 

@@ -27,11 +27,13 @@ public class LoginPresenter implements LoginMVP.Presenter {
     }
 
     @Override
-    public void autenticate(String username, String senha) {
+    public boolean autenticate(String username, String senha) {
         if(uDAO.loginUser(username, senha)){
             openWeather();
+            return true;
         } else{
             Log.d("Erro", "Senha Incorreta");
+            return false;
         }
     }
 

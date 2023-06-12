@@ -9,7 +9,7 @@ public interface LoginMVP {
 
     interface Presenter{
         void deatach();
-        void autenticate(String username, String senha);
+        boolean autenticate(String username, String senha);
         void openSignUp();
 
         void openWeather();

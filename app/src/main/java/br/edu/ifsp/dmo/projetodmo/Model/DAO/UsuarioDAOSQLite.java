@@ -47,6 +47,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
     @Override
     public boolean loginUser(String username, String senha) {
         Usuario usuario = null;
+        int flag = 0;
         String columns[] = new String[]{
                 Constant.ATTR_FULLNAME,
                 Constant.ATTR_USERNAME,
@@ -74,6 +75,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
             if (cursor.moveToNext()){
                 usuario = new Usuario(cursor.getString(0), cursor.getString(1), cursor.getString(2),
                         cursor.getString(3), cursor.getString(4), cursor.getString(5));
+                flag = 1;
             }
             cursor.close();
         } catch (Exception e){
@@ -81,6 +83,9 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
             return false;
         } finally{
             mDatabase.close();
+        }
+        if (flag == 0){
+            return false;
         }
         return true;
     }
