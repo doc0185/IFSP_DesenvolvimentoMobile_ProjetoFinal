@@ -30,6 +30,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
     private final String appid = "5ee46de429dda4d97d4f95695e9eaef0";
     DecimalFormat df = new DecimalFormat("#.##");
 
+    private String titulo;
     private String temperatura;
     private String sensacaoTermica;
     private int umidade;
@@ -48,7 +49,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
     }
 
     @Override
-    public void getWeatherDetails(TextView temperaturaTextView, TextView sensacaoTermicaTextView, TextView umidadeTextView, TextView descricaoTextView, TextView velocidadeVentoTextoView,
+    public void getWeatherDetails(TextView tituloTextView, TextView temperaturaTextView, TextView sensacaoTermicaTextView, TextView umidadeTextView, TextView descricaoTextView, TextView velocidadeVentoTextoView,
             TextView nuvensTextView, TextView pressaoAtmosfericaTextview, Double latitude, Double longitude) {
         String tempUrl = url + "?lat=" + latitude + "&lon=" + longitude + "&appid=" + appid;
 
@@ -56,6 +57,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
         StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("response", latitude + " " + longitude);
                 Log.d("response", response);
 
                 try {
@@ -75,9 +77,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
                     JSONObject jsonObjectsClouds = jsonResponse.getJSONObject("clouds");
                     nuvens = jsonObjectsClouds.getString("all");
                     JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
-                    String cityName = jsonResponse.getString("name");
-                    Log.d("response2", cityName);
-
+                    titulo = jsonResponse.getString("name");
 
                     temperatura = df.format(temp) + " ºC";
                     sensacaoTermica = df.format(feelsLike) + " ºC";
@@ -87,6 +87,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
                     nuvens += "%";
                     String pressaoAtmosfericaString = String.valueOf(pressaoAtmosferica) + "hPa";
 
+                    tituloTextView.setText(titulo);
                     temperaturaTextView.setText(temperatura);
                     sensacaoTermicaTextView.setText(sensacaoTermica);
                     umidadeTextView.setText(umidadeString);
@@ -122,32 +123,4 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
 
     }
 
-    @Override
-    public String getTemperatura() {
-        return temperatura;
-    }
-    @Override
-    public String getSensacaoTermica() {
-        return sensacaoTermica;
-    }
-    @Override
-    public int getUmidade() {
-        return umidade;
-    }
-    @Override
-    public String getDescricao() {
-        return descricao;
-    }
-    @Override
-    public String getVelocidadeVento() {
-        return velocidadeVento;
-    }
-    @Override
-    public String getNuvens() {
-        return nuvens;
-    }
-    @Override
-    public float getPressaoAtmosferica() {
-        return pressaoAtmosferica;
-    }
 }

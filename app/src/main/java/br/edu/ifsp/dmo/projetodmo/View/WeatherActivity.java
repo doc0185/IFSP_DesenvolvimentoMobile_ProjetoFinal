@@ -53,9 +53,8 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
             return;
         }
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000L, (float) 0, (LocationListener) this);
-        presenter.getWeatherDetails(temperaturaTextView, sensacaoTermicaTextView, umidadeTextView, descricaoTextView, velocidadeVentoTextView,
-                nuvensTextView, pressaoAtmosfericaTextView, latitude, longitude);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
+
     }
 
     private void findViews(){
@@ -93,6 +92,8 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     public void onLocationChanged(@NonNull Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        presenter.getWeatherDetails( tituloTextView, temperaturaTextView, sensacaoTermicaTextView, umidadeTextView, descricaoTextView, velocidadeVentoTextView,
+                nuvensTextView, pressaoAtmosfericaTextView, latitude, longitude);
 
     }
 }

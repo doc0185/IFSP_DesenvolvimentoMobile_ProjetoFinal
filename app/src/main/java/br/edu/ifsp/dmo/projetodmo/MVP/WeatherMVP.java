@@ -13,15 +13,9 @@ public interface WeatherMVP {
 
     interface Presenter{
         void deatach();
-        void getWeatherDetails(TextView temperaturaTextView, TextView sensacaoTermicaTextView, TextView umidadeTextView, TextView descricaoTextView,
+        void getWeatherDetails(TextView tituloTextView, TextView temperaturaTextView, TextView sensacaoTermicaTextView, TextView umidadeTextView, TextView descricaoTextView,
                                TextView velocidadeVentoTextoView, TextView nuvensTextView, TextView pressaoAtmosfericaTextview, Double latitude, Double longitude);
         void openCityWeather();
-        public String getTemperatura();
-        public String getSensacaoTermica();
-        public int getUmidade();
-        public String getDescricao();
-        public String getVelocidadeVento();
-        public String getNuvens();
-        public float getPressaoAtmosferica();
+
     }
 }
