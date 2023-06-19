@@ -4,6 +4,184 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".View.WeatherCityActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutid"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:hint="Digite o nome da Cidade: "
+            android:id="@+id/editTextCidadeWC"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="Buscar"
+            android:id="@+id/buttonBuscaCidadeWC" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textViewTituloWC"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutid"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutid"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTituloWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTituloWC"
+        android:textSize="20sp"
+        android:text="Temperatura: "
+        android:id="@+id/textViewTTemperaturaWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTTemperaturaWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTTemperaturaWC"
+        android:id="@+id/textViewTemperaturaWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperaturaWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTemperaturaWC"
+        android:textSize="20sp"
+        android:text="Sensação Térmica: "
+        android:id="@+id/textViewTSensacaoTermicaWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTSensacaoTermicaWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTSensacaoTermicaWC"
+        android:id="@+id/textViewSensacaoTermicaWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSensacaoTermicaWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewSensacaoTermicaWC"
+        android:textSize="20sp"
+        android:text="Umidade: "
+        android:id="@+id/textViewTUmidadeWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTUmidadeWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTUmidadeWC"
+        android:id="@+id/textViewUmidadeWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUmidadeWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewUmidadeWC"
+        android:textSize="20sp"
+        android:text="Descrição: "
+        android:id="@+id/textViewTDescricaoWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTDescricaoWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTDescricaoWC"
+        android:id="@+id/textViewDescricaoWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDescricaoWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewDescricaoWC"
+        android:textSize="20sp"
+        android:text="Velocidade do Vento: "
+        android:id="@+id/textViewTVelocidadeVentoWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTVelocidadeVentoWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTVelocidadeVentoWC"
+        android:id="@+id/textViewVelocidadeVentoWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewVelocidadeVentoWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewVelocidadeVentoWC"
+        android:textSize="20sp"
+        android:text="Nuvens: "
+        android:id="@+id/textViewTNuvensWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTNuvensWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTNuvensWC"
+        android:id="@+id/textViewNuvensWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNuvensWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewNuvensWC"
+        android:textSize="20sp"
+        android:text="Pressão Atmosférica: "
+        android:id="@+id/textViewTPressaoAtmosfericaWC" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTPressaoAtmosfericaWC"
+        app:layout_constraintStart_toEndOf="@+id/textViewTPressaoAtmosfericaWC"
+        android:id="@+id/textViewPressaoAtmosfericaWC" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

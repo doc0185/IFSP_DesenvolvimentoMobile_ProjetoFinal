@@ -73,7 +73,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
         buscarOutraCidadeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                presenter.openCityWeather();
             }
         });
     }
