@@ -1,6 +1,9 @@
 package br.edu.ifsp.dmo.projetodmo.View;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -12,8 +15,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherMVP;
 import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherPresenter;
@@ -32,6 +37,8 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     private Button buscarOutraCidadeButton;
 
     double latitude, longitude = 0;
+
+    public static final int REQUEST_PERMISSION_CODE = 999;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,21 +46,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
         findViews();
         setListener();
         presenter = new WeatherPresenter(this);
+        usarGPS();
 
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
 
     }
 
@@ -95,5 +90,54 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
         presenter.getWeatherDetails( tituloTextView, temperaturaTextView, sensacaoTermicaTextView, umidadeTextView, descricaoTextView, velocidadeVentoTextView,
                 nuvensTextView, pressaoAtmosfericaTextView, latitude, longitude);
 
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == REQUEST_PERMISSION_CODE){
+            for(int index = 0; index != permissions.length; index++){
+                if(permissions[index].equalsIgnoreCase(Manifest.permission.ACCESS_FINE_LOCATION) && grantResults[index] == PackageManager.PERMISSION_GRANTED){
+                    if (permissions[index+1].equalsIgnoreCase(Manifest.permission.ACCESS_COARSE_LOCATION) && grantResults[index] == PackageManager.PERMISSION_GRANTED){
+                        usarGPS();
+
+                    }
+                }
+            }
+        }
+
+    }
+
+    private void usarGPS(){
+        final Activity activity = this;
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
+        } else if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION) && ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
+                    new AlertDialog.Builder(this).setMessage("Para que o aplicativo consiga obter a previsão d otempo é necessário fornecer a permissão de acesso, caso contrário o recurso será desabilitado. Caso marque a opção 'Não perguntar novamente' essa funcionalidade só será habilitada nas configurações do aplicativo do Android").setPositiveButton("Fornecer", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_CODE);
+                            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_PERMISSION_CODE);
+
+                        }
+                        }).setNegativeButton("Agora não", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        dialogInterface.dismiss();
+                                    }
+                                }).show();
+
+        } else{
+            ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                        REQUEST_PERMISSION_CODE
+                );
+
+
+        }
     }
 }

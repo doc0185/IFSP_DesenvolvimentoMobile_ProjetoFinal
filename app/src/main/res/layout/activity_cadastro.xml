@@ -10,7 +10,6 @@
     <EditText
         android:id="@+id/edittext_userC"
         android:textSize="15sp"
-        android:layout_marginTop="40dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="text"
