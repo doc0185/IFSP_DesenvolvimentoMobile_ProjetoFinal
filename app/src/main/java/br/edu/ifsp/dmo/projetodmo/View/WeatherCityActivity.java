@@ -19,12 +19,19 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
     private EditText nomeCidadeEditText;
     private TextView tituloTextView;
     private TextView temperaturaTextView;
+    private TextView temperaturaTTextView;
     private TextView sensacaoTermicaTextView;
+    private TextView sensacaoTermicaTTextView;
     private TextView umidadeTextView;
+    private TextView umidadeTTextView;
     private TextView descricaoTextView;
+    private TextView descricaoTTextView;
     private TextView velocidadeVentoTextView;
+    private TextView velocidadeVentoTTextView;
     private TextView nuvensTextView;
+    private TextView nuvensTTextView;
     private TextView pressaoAtmosfericaTextView;
+    private TextView pressaoAtmosfericaTTextView;
     private Button buscarCidadeButton;
 
     @Override
@@ -33,6 +40,7 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
         setContentView(R.layout.activity_weather_city);
         findViews();
         setListener();
+        hideTextView();
         presenter = new WeatherCityPresenter(this);
     }
 
@@ -49,19 +57,47 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
         nomeCidadeEditText = findViewById(R.id.editTextCidadeWC);
         tituloTextView = findViewById(R.id.textViewTituloWC);
         temperaturaTextView = findViewById(R.id.textViewTemperaturaWC);
+        temperaturaTTextView = findViewById(R.id.textViewTTemperaturaWC);
         sensacaoTermicaTextView = findViewById(R.id.textViewSensacaoTermicaWC);
+        sensacaoTermicaTTextView = findViewById(R.id.textViewTSensacaoTermicaWC);
         umidadeTextView = findViewById(R.id.textViewUmidadeWC);
+        umidadeTTextView = findViewById(R.id.textViewTUmidadeWC);
         descricaoTextView = findViewById(R.id.textViewDescricaoWC);
+        descricaoTTextView = findViewById(R.id.textViewTDescricaoWC);
         velocidadeVentoTextView = findViewById(R.id.textViewVelocidadeVentoWC);
+        velocidadeVentoTTextView = findViewById(R.id.textViewTVelocidadeVentoWC);
         nuvensTextView = findViewById(R.id.textViewNuvensWC);
+        nuvensTTextView = findViewById(R.id.textViewTNuvensWC);
         pressaoAtmosfericaTextView = findViewById(R.id.textViewPressaoAtmosfericaWC);
+        pressaoAtmosfericaTTextView = findViewById(R.id.textViewTPressaoAtmosfericaWC);
         buscarCidadeButton = findViewById(R.id.buttonBuscaCidadeWC);
+    }
+
+    private void hideTextView(){
+        temperaturaTTextView.setVisibility(View.INVISIBLE);
+        sensacaoTermicaTTextView.setVisibility(View.INVISIBLE);
+        umidadeTTextView.setVisibility(View.INVISIBLE);
+        descricaoTTextView.setVisibility(View.INVISIBLE);
+        velocidadeVentoTTextView.setVisibility(View.INVISIBLE);
+        nuvensTTextView.setVisibility(View.INVISIBLE);
+        pressaoAtmosfericaTTextView.setVisibility(View.INVISIBLE);
+    }
+
+    private void showTextView(){
+        temperaturaTTextView.setVisibility(View.VISIBLE);
+        sensacaoTermicaTTextView.setVisibility(View.VISIBLE);
+        umidadeTTextView.setVisibility(View.VISIBLE);
+        descricaoTTextView.setVisibility(View.VISIBLE);
+        velocidadeVentoTTextView.setVisibility(View.VISIBLE);
+        nuvensTTextView.setVisibility(View.VISIBLE);
+        pressaoAtmosfericaTTextView.setVisibility(View.VISIBLE);
     }
 
     private void setListener(){
         buscarCidadeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                showTextView();
                 presenter.getWeatherDetails( tituloTextView, temperaturaTextView, sensacaoTermicaTextView,
                         umidadeTextView, descricaoTextView, velocidadeVentoTextView,
                         nuvensTextView, pressaoAtmosfericaTextView, nomeCidadeEditText);
