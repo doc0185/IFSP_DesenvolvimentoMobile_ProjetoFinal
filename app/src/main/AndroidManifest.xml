@@ -21,9 +21,6 @@
             android:name=".View.WeatherCityActivity"
             android:exported="false" />
         <activity
-            android:name=".WeatherCityActivity"
-            android:exported="false" />
-        <activity
             android:name=".View.CadastroUsuarioActivity"
             android:exported="false" />
         <activity

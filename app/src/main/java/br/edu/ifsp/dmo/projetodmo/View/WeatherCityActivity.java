@@ -1,9 +1,11 @@
 package br.edu.ifsp.dmo.projetodmo.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,7 +13,6 @@ import android.widget.TextView;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherCityMVP;
 import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherCityPresenter;
-import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherPresenter;
 import br.edu.ifsp.dmo.projetodmo.R;
 
 public class WeatherCityActivity extends AppCompatActivity implements WeatherCityMVP.View{
@@ -41,6 +42,7 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
         findViews();
         setListener();
         hideTextView();
+        setToolbar();
         presenter = new WeatherCityPresenter(this);
     }
 
@@ -103,5 +105,17 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
                         nuvensTextView, pressaoAtmosfericaTextView, nomeCidadeEditText);
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void setToolbar(){
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 }
