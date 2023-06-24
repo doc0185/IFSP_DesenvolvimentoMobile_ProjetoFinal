@@ -17,6 +17,11 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public Usuario (String username, String senha){
+        this.username = username;
+        this.senha = senha;
+    }
+
     public String getNomeCompleto() {
         return nomeCompleto;
     }

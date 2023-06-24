@@ -30,6 +30,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_userM" />
 
+    <CheckBox
+        android:id="@+id/check_remember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Lembrar Informações de Login"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_senhaM" />
+
     <Button
         android:id="@+id/button_loginM"
         android:layout_marginTop="40dp"
@@ -40,7 +52,7 @@
         android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edittext_senhaM" />
+        app:layout_constraintTop_toBottomOf="@+id/check_remember" />
 
     <Button
         android:id="@+id/button_novoUsuarioM"

@@ -6,8 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import br.edu.ifsp.dmo.projetodmo.Util.Constant;
+
 public class SQLiteHelper extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "WEATHER.DB";
+    public static final String DATABASE_NAME = Constant.DATABASE_FILE_NAME;
     public static final int DATABASE_VERSION = 1;
 
     public SQLiteHelper(Context context) {

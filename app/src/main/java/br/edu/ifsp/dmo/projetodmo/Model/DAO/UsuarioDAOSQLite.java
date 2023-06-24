@@ -2,8 +2,17 @@ package br.edu.ifsp.dmo.projetodmo.Model.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
 import br.edu.ifsp.dmo.projetodmo.Util.Constant;
@@ -89,4 +98,41 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
         }
         return true;
     }
+    @Override
+    public List<Usuario> listUsers(){
+        List<Usuario> dataset = new ArrayList<>();
+
+        String columns[] = new String[]{
+                Constant.ATTR_USERNAME,
+                Constant.ATTR_PASSWORD
+        };
+
+        try{
+            mDatabase = mHelper.getReadableDatabase();
+            Cursor cursor = mDatabase.query(
+                    Constant.ENTITY_USUARIO,
+                    columns,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+            while (cursor.moveToNext()){
+                Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1));
+                dataset.add(usuario);
+            }
+            cursor.close();
+        } catch (Exception e){
+
+            return null;
+        } finally{
+            mDatabase.close();
+        }
+        return dataset;
+
+
+    }
+
+
 }
