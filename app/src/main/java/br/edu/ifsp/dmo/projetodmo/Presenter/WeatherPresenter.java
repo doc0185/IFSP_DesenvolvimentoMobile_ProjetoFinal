@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
+import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificaoAPI;
+
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -96,7 +98,13 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
                     nuvensTextView.setText(nuvens);
                     pressaoAtmosfericaTextview.setText(String.valueOf(pressaoAtmosfericaString));
 
+                    if(descricao.equals("few clouds") || descricao.equals("broken clouds") || descricao.equals("shower rain") || descricao.equals("rain") || descricao.equals("thunderstorm") || descricao.equals("scattered clouds")){
+                        Log.d("teste", "dentro if descricao");
+                        ServicoNotificaoAPI servicoNotificaoAPI = new ServicoNotificaoAPI();
+                        servicoNotificaoAPI.getContext(view.getContext());
+                        servicoNotificaoAPI.startTimer();
 
+                    }
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);

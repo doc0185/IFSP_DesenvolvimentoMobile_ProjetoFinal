@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -21,6 +22,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherMVP;
+import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificaoAPI;
 import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherPresenter;
 import br.edu.ifsp.dmo.projetodmo.R;
 
@@ -52,6 +54,18 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
 
     }
 
+    @Override
+    protected void onDestroy() {
+        presenter.deatach();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        startService( new Intent( this, ServicoNotificaoAPI.class ));
+    }
+
     private void findViews(){
         tituloTextView = findViewById(R.id.textViewTitulo);
         temperaturaTextView = findViewById(R.id.textViewTemperatura);
@@ -81,6 +95,24 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     @Override
     public Bundle getBundle() {
         return getIntent().getExtras();
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        Log.d("teste", "onStatusChanged");
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
+        }
+
     }
 
     @Override
