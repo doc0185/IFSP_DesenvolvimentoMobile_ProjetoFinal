@@ -6,19 +6,11 @@ import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import br.edu.ifsp.dmo.projetodmo.MVP.LoginMVP;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.IUsuarioDAO;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.UsuarioDAOSQLite;
-import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
 import br.edu.ifsp.dmo.projetodmo.Util.Constant;
 import br.edu.ifsp.dmo.projetodmo.View.CadastroUsuarioActivity;
 import br.edu.ifsp.dmo.projetodmo.View.WeatherActivity;
@@ -26,12 +18,9 @@ import br.edu.ifsp.dmo.projetodmo.View.WeatherActivity;
 public class LoginPresenter implements LoginMVP.Presenter {
     private LoginMVP.View view;
     private IUsuarioDAO uDAO;
-    private List<Usuario> dataset;
-
 
     public LoginPresenter (LoginMVP.View view){
         this.view = view;
-        dataset = new ArrayList<>();
         uDAO = new UsuarioDAOSQLite(view.getContext());
     }
 

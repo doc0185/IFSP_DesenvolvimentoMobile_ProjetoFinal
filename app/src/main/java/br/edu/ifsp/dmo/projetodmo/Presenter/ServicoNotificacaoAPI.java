@@ -35,9 +35,7 @@ public class ServicoNotificacaoAPI extends Service {
 
     @Override
     public int onStartCommand (Intent intent , int flags , int startId) {
-        Log. e ( TAG , "onStartCommand" ) ;
         super .onStartCommand(intent , flags , startId) ;
-        //startTimer() ;
         return START_STICKY ;
     }
 
@@ -63,7 +61,6 @@ public class ServicoNotificacaoAPI extends Service {
     }
 
     public void createNotification () {
-        Log.d("teste", "create notification");
         NotificationManager mNotificationManager = (NotificationManager) contexto.getSystemService(NOTIFICATION_SERVICE ) ;
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(contexto.getApplicationContext() , default_notification_channel_id ) ;
         mBuilder.setContentTitle( "ALERTA" ) ;

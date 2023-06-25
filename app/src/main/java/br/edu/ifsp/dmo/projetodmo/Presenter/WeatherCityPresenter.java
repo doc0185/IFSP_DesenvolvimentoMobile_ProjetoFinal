@@ -1,6 +1,5 @@
 package br.edu.ifsp.dmo.projetodmo.Presenter;
 
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,8 +62,6 @@ public class WeatherCityPresenter implements WeatherCityMVP.Presenter {
                 @Override
                 public void onResponse(String response) {
 
-                    Log.d("response", response);
-
                     try {
                         JSONObject jsonResponse = new JSONObject(response);
                         JSONArray jsonArray = jsonResponse.getJSONArray("weather");
@@ -110,7 +107,7 @@ public class WeatherCityPresenter implements WeatherCityMVP.Presenter {
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(view.getContext(), error.toString().trim(), Toast.LENGTH_SHORT);
+                    Toast.makeText(view.getContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
                 }
             });
 

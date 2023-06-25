@@ -17,17 +17,8 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public Usuario (String username, String senha){
-        this.username = username;
-        this.senha = senha;
-    }
-
     public String getNomeCompleto() {
         return nomeCompleto;
-    }
-
-    public void setNomeCompleto(String nomeCompleto) {
-        this.nomeCompleto = nomeCompleto;
     }
 
     public String getUsername() {
@@ -42,24 +33,12 @@ public class Usuario {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
     public String getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getTelefone() {
         return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
     }
 
     public String getSenha() {

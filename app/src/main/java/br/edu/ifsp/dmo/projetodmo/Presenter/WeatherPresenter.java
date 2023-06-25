@@ -1,7 +1,6 @@
 package br.edu.ifsp.dmo.projetodmo.Presenter;
 
 import android.content.Intent;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,8 +55,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
         StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("response", latitude + " " + longitude);
-                Log.d("response", response);
+
 
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
@@ -97,7 +95,6 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
 
                     if(descricao.equals("few clouds") || descricao.equals("broken clouds") || descricao.equals("shower rain") ||
                             descricao.equals("rain") || descricao.equals("thunderstorm") || descricao.equals("scattered clouds")){
-                        Log.d("teste", "dentro if descricao");
                         ServicoNotificacaoAPI servicoNotificaoAPI = new ServicoNotificacaoAPI();
                         servicoNotificaoAPI.getContext(view.getContext());
                         servicoNotificaoAPI.startTimer();

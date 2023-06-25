@@ -4,13 +4,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,11 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherMVP;
-import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificacaoAPI;
 import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherPresenter;
 import br.edu.ifsp.dmo.projetodmo.R;
 
@@ -67,7 +61,6 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     @Override
     protected void onStop() {
         super.onStop();
-        //startService( new Intent( this, ServicoNotificacaoAPI.class ));
     }
 
     private void findViews(){
@@ -111,7 +104,6 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-        Log.d("teste", "onStatusChanged");
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 100, (LocationListener) this);
@@ -123,7 +115,6 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     public void onLocationChanged(@NonNull Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        Log.d("teste", "onLocationChanged");
 
         presenter.getWeatherDetails( tituloTextView, temperaturaTextView, sensacaoTermicaTextView, umidadeTextView, descricaoTextView, velocidadeVentoTextView,
                 nuvensTextView, pressaoAtmosfericaTextView, latitude, longitude);

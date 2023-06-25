@@ -3,9 +3,6 @@ package br.edu.ifsp.dmo.projetodmo.Model.DAO;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
-
 import br.edu.ifsp.dmo.projetodmo.Util.Constant;
 
 public class SQLiteHelper extends SQLiteOpenHelper {
@@ -22,7 +19,6 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(sql);
     }
 
-    // SEPARADO PARA FAZER DEPOIS
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 

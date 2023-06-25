@@ -6,7 +6,6 @@ import br.edu.ifsp.dmo.projetodmo.MVP.CadastroMVP;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.IUsuarioDAO;
 import br.edu.ifsp.dmo.projetodmo.Model.DAO.UsuarioDAOSQLite;
 import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
-import br.edu.ifsp.dmo.projetodmo.View.CadastroUsuarioActivity;
 import br.edu.ifsp.dmo.projetodmo.View.MainActivity;
 
 public class CadastroPresenter implements CadastroMVP.Presenter{
@@ -35,11 +34,7 @@ public class CadastroPresenter implements CadastroMVP.Presenter{
 
     @Override
     public boolean checkPassword(String senha, String confirmaSenha) {
-       if (senha.equals(confirmaSenha)){
-           return true;
-       } else{
-           return false;
-       }
+        return senha.equals(confirmaSenha);
     }
 
     @Override

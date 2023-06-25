@@ -2,17 +2,8 @@ package br.edu.ifsp.dmo.projetodmo.Model.DAO;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import br.edu.ifsp.dmo.projetodmo.Model.Entities.Usuario;
 import br.edu.ifsp.dmo.projetodmo.Util.Constant;
@@ -48,16 +39,16 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
         contentValues.put(Constant.ATTR_PHONE, u.getTelefone());
         contentValues.put(Constant.ATTR_PASSWORD, u.getSenha());
         mDatabase = mHelper.getWritableDatabase();
-        long lines = mDatabase.insert(Constant.ENTITY_USUARIO, null, contentValues);
+        mDatabase.insert(Constant.ENTITY_USUARIO, null, contentValues);
         mDatabase.close();
 
     }
 
     @Override
     public boolean loginUser(String username, String senha) {
-        Usuario usuario = null;
+
         int flag = 0;
-        String columns[] = new String[]{
+        String[] columns = new String[]{
                 Constant.ATTR_FULLNAME,
                 Constant.ATTR_USERNAME,
                 Constant.ATTR_CITY,
@@ -68,7 +59,7 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
 
         String selection = Constant.ATTR_USERNAME + " = ? ";
         selection += "AND " + Constant.ATTR_PASSWORD + " = ? ";
-        String selectionArgs[] = {username, senha};
+        String[] selectionArgs = {username, senha};
 
         try{
             mDatabase = mHelper.getReadableDatabase();
@@ -82,56 +73,16 @@ public class UsuarioDAOSQLite implements IUsuarioDAO{
                     null
             );
             if (cursor.moveToNext()){
-                usuario = new Usuario(cursor.getString(0), cursor.getString(1), cursor.getString(2),
-                        cursor.getString(3), cursor.getString(4), cursor.getString(5));
+
                 flag = 1;
             }
             cursor.close();
         } catch (Exception e){
-            usuario = null;
             return false;
         } finally{
             mDatabase.close();
         }
-        if (flag == 0){
-            return false;
-        }
-        return true;
-    }
-    @Override
-    public List<Usuario> listUsers(){
-        List<Usuario> dataset = new ArrayList<>();
-
-        String columns[] = new String[]{
-                Constant.ATTR_USERNAME,
-                Constant.ATTR_PASSWORD
-        };
-
-        try{
-            mDatabase = mHelper.getReadableDatabase();
-            Cursor cursor = mDatabase.query(
-                    Constant.ENTITY_USUARIO,
-                    columns,
-                    null,
-                    null,
-                    null,
-                    null,
-                    null
-            );
-            while (cursor.moveToNext()){
-                Usuario usuario = new Usuario(cursor.getString(0), cursor.getString(1));
-                dataset.add(usuario);
-            }
-            cursor.close();
-        } catch (Exception e){
-
-            return null;
-        } finally{
-            mDatabase.close();
-        }
-        return dataset;
-
-
+        return flag != 0;
     }
 
 
