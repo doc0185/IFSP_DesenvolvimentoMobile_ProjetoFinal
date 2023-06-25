@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="10dp"
+    android:background="#a4e3ff"
     tools:context=".View.MainActivity">
 
     <EditText
@@ -13,7 +14,10 @@
         android:layout_marginTop="5dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="Digite seu Username"
+        android:hint="@string/username"
+        android:backgroundTint="@color/black"
+        android:textColorHint="@color/black"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +29,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
-        android:hint="Digite sua Senha"
+        android:hint="@string/senha"
+        android:backgroundTint="@color/black"
+        android:textColorHint="@color/black"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edittext_userM" />
@@ -35,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Lembrar Informações de Login"
+        android:text="@string/lembrar_login"
         android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,9 +53,9 @@
         android:id="@+id/button_loginM"
         android:layout_marginTop="10dp"
         android:textSize="15sp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Confirmar"
+        android:text="@string/confirmar"
         android:backgroundTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,9 +64,9 @@
     <Button
         android:id="@+id/button_novoUsuarioM"
         android:layout_marginBottom="15dp"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Cadastre-se"
+        android:text="@string/cadastre_se"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />

@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">ProjetoDMO</string>
+    <string name="username">Digite seu Username</string>
+    <string name="nome_completo">Digite sua Nome Completo</string>
+    <string name="cidade">Digite sua Cidade</string>
+    <string name="estado">Digite seu Estado</string>
+    <string name="telefone">Digite seu Telefone</string>
+    <string name="senha">Digite sua Senha</string>
+    <string name="confirme_senha">Confirme sua Senha</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="j_possui_conta">Já possui conta?</string>
+    <string name="lembrar_login">Lembrar Informações de Login</string>
+    <string name="cadastre_se">Cadastre-se</string>
+    <string name="nome_cidade">Nome da Cidade</string>
+    <string name="temperatura_">Temperatura:</string>
+    <string name="temperatura">Temperatura</string>
+    <string name="sensacao_termica_">Sensação Térmica:</string>
+    <string name="sensacao_termica">Sensação Térmica</string>
+    <string name="umidade_">Umidade:</string>
+    <string name="umidade">Umidade</string>
+    <string name="descricao_">Descrição:</string>
+    <string name="descricao">Descrição</string>
+    <string name="velocidade_do_vento_">Velocidade do Vento:</string>
+    <string name="velocidade_do_vento">Velocidade do Vento</string>
+    <string name="nuvens_">Nuvens:</string>
+    <string name="nuvens">Nuvens</string>
+    <string name="pressao_atmosferica_">Pressão Atmosférica:</string>
+    <string name="pressao_atmosferica">Pressão Atmosférica</string>
+    <string name="buscar_em_outra_cidade">Buscar em outra Cidade</string>
+    <string name="digite_o_nome_da_cidade">Digite o nome da Cidade</string>
+    <string name="buscar">Buscar</string>
 </resources>

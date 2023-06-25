@@ -26,7 +26,6 @@ import br.edu.ifsp.dmo.projetodmo.View.WeatherActivity;
 public class LoginPresenter implements LoginMVP.Presenter {
     private LoginMVP.View view;
     private IUsuarioDAO uDAO;
-    public Usuario usuario;
     private List<Usuario> dataset;
 
 

@@ -76,22 +76,36 @@ public class WeatherCityActivity extends AppCompatActivity implements WeatherCit
     }
 
     private void hideTextView(){
+        temperaturaTextView.setVisibility(View.INVISIBLE);
         temperaturaTTextView.setVisibility(View.INVISIBLE);
+        sensacaoTermicaTextView.setVisibility(View.INVISIBLE);
         sensacaoTermicaTTextView.setVisibility(View.INVISIBLE);
+        umidadeTextView.setVisibility(View.INVISIBLE);
         umidadeTTextView.setVisibility(View.INVISIBLE);
+        descricaoTextView.setVisibility(View.INVISIBLE);
         descricaoTTextView.setVisibility(View.INVISIBLE);
+        velocidadeVentoTextView.setVisibility(View.INVISIBLE);
         velocidadeVentoTTextView.setVisibility(View.INVISIBLE);
         nuvensTTextView.setVisibility(View.INVISIBLE);
+        nuvensTextView.setVisibility(View.INVISIBLE);
         pressaoAtmosfericaTTextView.setVisibility(View.INVISIBLE);
+        pressaoAtmosfericaTextView.setVisibility(View.INVISIBLE);
     }
 
     private void showTextView(){
+        temperaturaTextView.setVisibility(View.VISIBLE);
         temperaturaTTextView.setVisibility(View.VISIBLE);
+        sensacaoTermicaTextView.setVisibility(View.VISIBLE);
         sensacaoTermicaTTextView.setVisibility(View.VISIBLE);
+        umidadeTextView.setVisibility(View.VISIBLE);
         umidadeTTextView.setVisibility(View.VISIBLE);
+        descricaoTextView.setVisibility(View.VISIBLE);
         descricaoTTextView.setVisibility(View.VISIBLE);
+        velocidadeVentoTextView.setVisibility(View.VISIBLE);
         velocidadeVentoTTextView.setVisibility(View.VISIBLE);
+        nuvensTextView.setVisibility(View.VISIBLE);
         nuvensTTextView.setVisibility(View.VISIBLE);
+        pressaoAtmosfericaTextView.setVisibility(View.VISIBLE);
         pressaoAtmosfericaTTextView.setVisibility(View.VISIBLE);
     }
 
