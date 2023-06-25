@@ -21,8 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherMVP;
-import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificaoAPI;
+import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificacaoAPI;
 import br.edu.ifsp.dmo.projetodmo.Presenter.WeatherPresenter;
 import br.edu.ifsp.dmo.projetodmo.R;
 
@@ -58,12 +61,13 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     protected void onDestroy() {
         presenter.deatach();
         super.onDestroy();
+
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        startService( new Intent( this, ServicoNotificaoAPI.class ));
+        //startService( new Intent( this, ServicoNotificacaoAPI.class ));
     }
 
     private void findViews(){
@@ -110,7 +114,7 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
         Log.d("teste", "onStatusChanged");
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 100, (LocationListener) this);
         }
 
     }
@@ -119,8 +123,11 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
     public void onLocationChanged(@NonNull Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
+        Log.d("teste", "onLocationChanged");
+
         presenter.getWeatherDetails( tituloTextView, temperaturaTextView, sensacaoTermicaTextView, umidadeTextView, descricaoTextView, velocidadeVentoTextView,
                 nuvensTextView, pressaoAtmosfericaTextView, latitude, longitude);
+
 
     }
 
@@ -146,9 +153,9 @@ public class WeatherActivity extends AppCompatActivity implements WeatherMVP.Vie
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 0, (LocationListener) this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 10000, (float) 100, (LocationListener) this);
         } else if(ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_COARSE_LOCATION) && ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
-                    new AlertDialog.Builder(this).setMessage("Para que o aplicativo consiga obter a previsão d otempo é necessário fornecer a permissão de acesso, caso contrário o recurso será desabilitado. Caso marque a opção 'Não perguntar novamente' essa funcionalidade só será habilitada nas configurações do aplicativo do Android").setPositiveButton("Fornecer", new DialogInterface.OnClickListener() {
+                    new AlertDialog.Builder(this).setMessage("Para que o aplicativo consiga obter a previsão do tempo é necessário fornecer a permissão de acesso, caso contrário o recurso será desabilitado. Caso marque a opção 'Não perguntar novamente' essa funcionalidade só será habilitada nas configurações do aplicativo do Android").setPositiveButton("Fornecer", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_PERMISSION_CODE);

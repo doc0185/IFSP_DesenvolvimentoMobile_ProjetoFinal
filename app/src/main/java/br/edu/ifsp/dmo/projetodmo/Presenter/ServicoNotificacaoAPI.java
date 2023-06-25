@@ -17,13 +17,13 @@ import java.util.TimerTask;
 
 import br.edu.ifsp.dmo.projetodmo.R;
 
-public class ServicoNotificaoAPI extends Service {
+public class ServicoNotificacaoAPI extends Service {
     public static final String NOTIFICATION_CHANNEL_ID = "10001" ;
     private final static String default_notification_channel_id = "default" ;
     Timer timer ;
     TimerTask timerTask ;
     String TAG = "Timers" ;
-    int Your_X_SECS = 1200 ;
+    int Your_X_SECS = 12000 ;
 
     Context contexto;
 
@@ -46,7 +46,7 @@ public class ServicoNotificaoAPI extends Service {
     public void startTimer () {
         timer = new Timer();
         initializeTimerTask();
-        timer.schedule(timerTask, 5000, Your_X_SECS * 1000); //
+        timer.schedule(timerTask, 5000, Your_X_SECS * 10000L);
     }
 
     public void initializeTimerTask () {

@@ -1,11 +1,9 @@
 package br.edu.ifsp.dmo.projetodmo.Presenter;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
-import br.edu.ifsp.dmo.projetodmo.Presenter.ServicoNotificaoAPI;
 
 
 import com.android.volley.Request;
@@ -22,7 +20,6 @@ import org.json.JSONObject;
 
 import java.text.DecimalFormat;
 
-import br.edu.ifsp.dmo.projetodmo.MVP.CadastroMVP;
 import br.edu.ifsp.dmo.projetodmo.MVP.WeatherMVP;
 import br.edu.ifsp.dmo.projetodmo.View.WeatherCityActivity;
 
@@ -98,9 +95,10 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
                     nuvensTextView.setText(nuvens);
                     pressaoAtmosfericaTextview.setText(String.valueOf(pressaoAtmosfericaString));
 
-                    if(descricao.equals("few clouds") || descricao.equals("broken clouds") || descricao.equals("shower rain") || descricao.equals("rain") || descricao.equals("thunderstorm") || descricao.equals("scattered clouds")){
+                    if(descricao.equals("few clouds") || descricao.equals("broken clouds") || descricao.equals("shower rain") ||
+                            descricao.equals("rain") || descricao.equals("thunderstorm") || descricao.equals("scattered clouds")){
                         Log.d("teste", "dentro if descricao");
-                        ServicoNotificaoAPI servicoNotificaoAPI = new ServicoNotificaoAPI();
+                        ServicoNotificacaoAPI servicoNotificaoAPI = new ServicoNotificacaoAPI();
                         servicoNotificaoAPI.getContext(view.getContext());
                         servicoNotificaoAPI.startTimer();
 
@@ -113,7 +111,7 @@ public class WeatherPresenter implements WeatherMVP.Presenter{
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(view.getContext(), error.toString().trim(), Toast.LENGTH_SHORT);
+                Toast.makeText(view.getContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
             }
         });
 
