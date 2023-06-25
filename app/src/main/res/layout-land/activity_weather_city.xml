@@ -7,28 +7,25 @@
     android:padding="20dp"
     tools:context=".View.WeatherCityActivity">
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonBuscaCidadeWC"
-        app:layout_constraintTop_toTopOf="parent"
-        android:hint="Digite o nome da Cidade: "
-        android:id="@+id/editTextCidadeWC"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/buttonBuscaCidadeWC"
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="Digite o nome da Cidade: "
+            android:id="@+id/editTextCidadeWC"/>
 
-    <Button
-        app:layout_constraintStart_toEndOf="@+id/editTextCidadeWC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Buscar"
-        android:id="@+id/buttonBuscaCidadeWC" />
+        <Button
+            app:layout_constraintStart_toEndOf="@+id/editTextCidadeWC"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:text="Buscar"
+            android:id="@+id/buttonBuscaCidadeWC" />
 
     <TextView
         android:id="@+id/textViewTituloWC"
@@ -199,5 +196,7 @@
         </LinearLayout>
 
     </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

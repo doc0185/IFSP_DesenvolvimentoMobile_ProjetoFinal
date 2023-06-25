@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".View.MainActivity">
+
+    <EditText
+        android:id="@+id/edittext_userC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Digite seu Username"
+        android:inputType="text"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_nomeC"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edittext_nomeC"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Digite sua Nome Completo"
+        android:inputType="text"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edittext_userC"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/edittext_cidadeC"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Digite sua Cidade"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_estadoC"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_userC" />
+
+    <EditText
+        android:id="@+id/edittext_estadoC"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Digite seu Estado"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edittext_cidadeC"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_nomeC" />
+
+    <EditText
+        android:id="@+id/edittext_telefoneC"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:hint="Digite seu Telefone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_estadoC" />
+
+    <EditText
+        android:id="@+id/edittext_senhaC"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Digite sua Senha"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/edittext_senhaConfirmaC"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_telefoneC" />
+
+    <EditText
+        android:id="@+id/edittext_senhaConfirmaC"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Confirme sua Senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/edittext_senhaC"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_telefoneC" />
+
+    <Button
+        android:id="@+id/button_confirmarC"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confirmar"
+        android:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_senhaConfirmaC" />
+
+    <Button
+        android:id="@+id/button_jaTemContaC"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Já possui conta?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_confirmarC" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

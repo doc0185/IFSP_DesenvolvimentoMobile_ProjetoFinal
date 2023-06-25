@@ -1,54 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context=".View.WeatherCityActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <EditText
+    <TextView
+        android:id="@+id/textViewTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/buttonBuscaCidadeWC"
         app:layout_constraintTop_toTopOf="parent"
-        android:hint="Digite o nome da Cidade: "
-        android:id="@+id/editTextCidadeWC"/>
-
-    <Button
-        app:layout_constraintStart_toEndOf="@+id/editTextCidadeWC"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="20dp"
-
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:text="Buscar"
-        android:id="@+id/buttonBuscaCidadeWC" />
-
-    <TextView
-        android:id="@+id/textViewTituloWC"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBuscaCidadeWC"
-        app:layout_constraintStart_toEndOf="@+id/buttonBuscaCidadeWC"
         android:textSize="20sp" />
 
     <ScrollView
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="80dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTituloWC"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -61,143 +35,168 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTituloWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTituloWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitulo"
+                app:layout_constraintStart_toEndOf="@+id/textViewTitulo"
                 android:textSize="20sp"
                 android:text="Temperatura: "
-                android:id="@+id/textViewTTemperaturaWC" />
+                android:id="@+id/textViewTTemperatura" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTTemperaturaWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTTemperaturaWC"
-                android:id="@+id/textViewTemperaturaWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTTemperatura"
+                app:layout_constraintStart_toEndOf="@+id/textViewTTemperatura"
+                android:id="@+id/textViewTemperatura" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTemperaturaWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTemperaturaWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTemperatura"
+                app:layout_constraintStart_toEndOf="@+id/textViewTemperatura"
                 android:textSize="20sp"
                 android:text="Sensação Térmica: "
-                android:id="@+id/textViewTSensacaoTermicaWC" />
+                android:id="@+id/textViewTSensacaoTermica" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTSensacaoTermicaWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTSensacaoTermicaWC"
-                android:id="@+id/textViewSensacaoTermicaWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTSensacaoTermica"
+                app:layout_constraintStart_toEndOf="@+id/textViewTSensacaoTermica"
+                android:id="@+id/textViewSensacaoTermica" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewSensacaoTermicaWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewSensacaoTermicaWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewSensacaoTermica"
+                app:layout_constraintStart_toEndOf="@+id/textViewSensacaoTermica"
                 android:textSize="20sp"
                 android:text="Umidade: "
-                android:id="@+id/textViewTUmidadeWC" />
+                android:id="@+id/textViewTUmidade" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTUmidadeWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTUmidadeWC"
-                android:id="@+id/textViewUmidadeWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTUmidade"
+                app:layout_constraintStart_toEndOf="@+id/textViewTUmidade"
+                android:id="@+id/textViewUmidade" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewUmidadeWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewUmidadeWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewUmidade"
+                app:layout_constraintStart_toEndOf="@+id/textViewUmidade"
                 android:textSize="20sp"
                 android:text="Descrição: "
-                android:id="@+id/textViewTDescricaoWC" />
+                android:id="@+id/textViewTDescricao" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTDescricaoWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTDescricaoWC"
-                android:id="@+id/textViewDescricaoWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTDescricao"
+                app:layout_constraintStart_toEndOf="@+id/textViewTDescricao"
+                android:id="@+id/textViewDescricao" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewDescricaoWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewDescricaoWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDescricao"
+                app:layout_constraintStart_toEndOf="@+id/textViewDescricao"
                 android:textSize="20sp"
                 android:text="Velocidade do Vento: "
-                android:id="@+id/textViewTVelocidadeVentoWC" />
+                android:id="@+id/textViewTVelocidadeVento" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTVelocidadeVentoWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTVelocidadeVentoWC"
-                android:id="@+id/textViewVelocidadeVentoWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTVelocidadeVento"
+                app:layout_constraintStart_toEndOf="@+id/textViewTVelocidadeVento"
+                android:id="@+id/textViewVelocidadeVento" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewVelocidadeVentoWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewVelocidadeVentoWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewVelocidadeVento"
+                app:layout_constraintStart_toEndOf="@+id/textViewVelocidadeVento"
                 android:textSize="20sp"
                 android:text="Nuvens: "
-                android:id="@+id/textViewTNuvensWC" />
+                android:id="@+id/textViewTNuvens" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTNuvensWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTNuvensWC"
-                android:id="@+id/textViewNuvensWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTNuvens"
+                app:layout_constraintStart_toEndOf="@+id/textViewTNuvens"
+                android:id="@+id/textViewNuvens" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewNuvensWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewNuvensWC"
+                app:layout_constraintTop_toBottomOf="@+id/textViewNuvens"
+                app:layout_constraintStart_toEndOf="@+id/textViewNuvens"
                 android:textSize="20sp"
                 android:text="Pressão Atmosférica: "
-                android:id="@+id/textViewTPressaoAtmosfericaWC" />
+                android:id="@+id/textViewTPressaoAtmosferica" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textViewTPressaoAtmosfericaWC"
-                app:layout_constraintStart_toEndOf="@+id/textViewTPressaoAtmosfericaWC"
-                android:id="@+id/textViewPressaoAtmosfericaWC" />
+                app:layout_constraintTop_toBottomOf="@+id/textViewTPressaoAtmosferica"
+                app:layout_constraintStart_toEndOf="@+id/textViewTPressaoAtmosferica"
+                android:id="@+id/textViewPressaoAtmosferica" />
+
+
 
         </LinearLayout>
 
+
+
     </ScrollView>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Buscar em outra Cidade"
+        android:id="@+id/buttonBuscaCidade" />
+
+
+
+
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
